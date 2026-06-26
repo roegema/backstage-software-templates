@@ -1,0 +1,4 @@
+Hi, this si a test file showing the resulting values after using the template from backstage
+
+- app name: ${{values.app_name}}
+- app env: ${{values.app_env}}
