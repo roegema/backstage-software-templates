@@ -1,12 +1,13 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: ${{values.app_name}}
-  description: Python app that displays time, named ${{values.app_name}} and deployed in ${{values.app_env}}
+  name: ${{ values.app_name }}
+  description: Python app that displays time, named ${{ values.app_name }} and deployed in ${{ values.app_env }}
   annotations:
-    github.com/project-slug: roegema/${{values.app_name}}
-    # backstage.io/techdocs-ref: url:https://roegema.github.io/${{values.app_name}}/
+    github.com/project-slug: roegema/${{ values.app_name }}
+    # backstage.io/techdocs-ref: url:https://roegema.github.io/${{ values.app_name }}/
 spec:
   type: service
   owner: development
   lifecycle: experimental
+

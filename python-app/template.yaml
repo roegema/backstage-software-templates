@@ -4,6 +4,7 @@ metadata:
   name: python-template
   title: Python flask template
   description: Provisions a minimalistic flask application
+
 spec:
   owner: development
   type: service
@@ -33,16 +34,19 @@ spec:
       action: fetch:template
       input:
         url: ./template
+        templateFileExtension: false
         values:
-          app_name: ${{parameters.component_id}}
-          app_env: ${{parameters.environment}}
+          app_name: ${{ parameters.component_id }}
+          app_env: ${{ parameters.environment }}
+``
 
     - id: publish
       name: Publish
       action: publish:github
       input:
         description: This is ${{ parameters.component_id }}
-        repoUrl: github.com?owner=roegema&repo=${{parameters.component_id}}
+        repoUrl: github.com?owner=roegema&repo=${{ parameters.component_id }}
+        defaultBranch: main
         protectDefaultBranch: false
         repoVisibility: public
 
@@ -50,10 +54,10 @@ spec:
       name: Register
       action: catalog:register
       input:
-        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
-        catalogInfoPath: "/catalog-info.yaml"
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: catalog-info.yaml
 
   output:
     links:
       - title: Repository
-        url: ${{ steps['publish'].output.remoteUrl }}
+        url: ${{ steps.publish.output.remoteUrl }}
