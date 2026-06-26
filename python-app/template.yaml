@@ -29,16 +29,16 @@ spec:
             - prod
 
   steps:
+
     - id: fetch-base
       name: Fetch Base
       action: fetch:template
       input:
-        url: ./template
+        url: file://./template
         templateFileExtension: false
         values:
           app_name: ${{ parameters.component_id }}
           app_env: ${{ parameters.environment }}
-``
 
     - id: publish
       name: Publish
